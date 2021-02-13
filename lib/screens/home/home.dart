@@ -7,6 +7,6 @@ class Home extends GetView<HomeController> {
   Widget build(context) => Scaffold(
       appBar: AppBar(title: Text("${controller.text}")),
       body: Center(
-        child: Obx(() => Text("${controller.text}")),
+        child: Obx(() => Text("There are ${controller.popularMovies.length} popular movies")),
       ));
 }
