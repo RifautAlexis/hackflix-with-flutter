@@ -12,6 +12,17 @@ class Backbone extends StatelessWidget {
         title: Text("Hackflix with Flutter"),
       ),
       body: this.body,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.pink,
+        child: Container(
+          height: 50.0,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => print("Float action button pressed"),
+        child: Icon(Icons.notifications),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
