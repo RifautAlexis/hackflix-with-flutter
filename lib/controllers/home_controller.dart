@@ -11,10 +11,14 @@ class HomeController extends GetxController {
   final RxString text = "Hello wolrd".obs;
 
   @override
-  Future<void> onInit() async {
+  void onInit() {
+    getMovies();
+    super.onInit();
+  }
+
+  Future<void> getMovies() async {
     PopularMovies popularMoviesfetched = await _movieService.getMovies();
     popularMovies.assignAll(popularMoviesfetched.results);
-    super.onInit();
   }
 
 }

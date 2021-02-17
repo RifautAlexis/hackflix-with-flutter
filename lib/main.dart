@@ -11,6 +11,7 @@ void main() {
       ),
       initialRoute: '/',
       getPages: routes,
+      // unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),
     )
   );
 }
