@@ -6,8 +6,8 @@ import 'package:hackflix/screens/home/preview_movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 
 class Home extends StatelessWidget {
-  BackboneController backboneController = Get.find();
-  HomeController homeController = Get.find();
+  final BackboneController backboneController = Get.find();
+  final HomeController homeController = Get.find();
 
   @override
   Widget build(context) => Backbone(
