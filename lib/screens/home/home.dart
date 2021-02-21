@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hackflix/controllers/backbone_controller.dart';
 import 'package:hackflix/controllers/home_controller.dart';
 import 'package:hackflix/screens/home/preview_movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 
-class Home extends GetView<HomeController> {
+class Home extends StatelessWidget {
+  BackboneController backboneController = Get.find();
+  HomeController homeController = Get.find();
+
   @override
   Widget build(context) => Backbone(
         body: Obx(
@@ -12,6 +16,7 @@ class Home extends GetView<HomeController> {
             children: [
               Flexible(
                 child: GridView.builder(
+                  controller: backboneController.scrollBottomBarController,
                   padding: EdgeInsets.all(10.0),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -19,9 +24,11 @@ class Home extends GetView<HomeController> {
                     mainAxisSpacing: 10,
                     crossAxisCount: 2,
                   ),
-                  itemCount: controller.popularMovies.length,
+                  itemCount: homeController.popularMovies.length,
                   itemBuilder: (_, index) {
-                    return PreviewMovie(index); // Give index and not object to test how Get fetch the controller through the widget tree
+                    return PreviewMovie(
+                      index,
+                    ); // Give index and not object to test how Get fetch the controller through the widget tree
                   },
                 ),
               ),
