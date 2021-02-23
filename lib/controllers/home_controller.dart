@@ -7,8 +7,6 @@ class HomeController extends GetxController {
   final MovieService _movieService = MovieService();
 
   var popularMovies = List<Movie>().obs;
-  var popularMovie = Movie().obs;
-  final RxString text = "Hello wolrd".obs;
 
   @override
   void onInit() {
