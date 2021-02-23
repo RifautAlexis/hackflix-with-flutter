@@ -11,27 +11,25 @@ class Backbone extends GetView<BackboneController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: CustomAppbar(),
-        ),
-        body: SafeArea(
-          child: this.body,
-        ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.pink,
-          child: Container(
-            height: 50.0,
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => print("Float action button pressed"),
-          child: Icon(Icons.notifications),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: CustomAppbar(),
       ),
+      body: SafeArea(
+        child: this.body,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.pink,
+        child: Container(
+          height: 50.0,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => print("Float action button pressed"),
+        child: Icon(Icons.notifications),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
