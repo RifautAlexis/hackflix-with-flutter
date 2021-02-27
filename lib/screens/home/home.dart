@@ -12,6 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(context) => Backbone(
+        appbarSubWidget: _buildAppbarSubWidget(),
         body: Obx(
           () => Column(
             children: [
@@ -41,4 +42,20 @@ class Home extends StatelessWidget {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       );
+
+  Widget _buildAppbarSubWidget() {
+    return ListView(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      children: [
+        ActionChip(label: Text("Popular"), onPressed: () => print("Popular"),),
+        SizedBox(width: 10),
+        ActionChip(label: Text("Newest"), onPressed: () => print("Newest"),),
+        SizedBox(width: 10),
+        ActionChip(label: Text("Top rated"), onPressed: () => print("Top rated"),),
+        SizedBox(width: 15),
+        ActionChip(label: Text("Upcoming"), onPressed: () => print("Upcoming"),),
+      ],
+    );
+  }
 }
