@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
 import 'package:hackflix/controllers/home_controller.dart';
+import 'package:hackflix/screens/home/animated_filter.dart';
 import 'package:hackflix/screens/home/preview_movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 
@@ -35,5 +36,9 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
+        floatingActionButton: AnimatedFilter(
+          onClick: () {},
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       );
 }
