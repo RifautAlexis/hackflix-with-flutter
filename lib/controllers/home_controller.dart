@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:hackflix/data/filter.dart';
 import 'package:hackflix/data/in_theater_movies.dart';
 import 'package:hackflix/data/movie.dart';
 import 'package:hackflix/data/popular_movies.dart';
@@ -12,6 +13,8 @@ class HomeController extends GetxController {
 
   var movies = List<Movie>().obs;
 
+  Rx<Filter> selectedFilter = Filter.popular.obs;
+
   @override
   void onInit() {
     getPopularMovies();
@@ -21,21 +24,29 @@ class HomeController extends GetxController {
   Future<void> getPopularMovies() async {
     PopularMovies popularMoviesfetched = await _movieService.getPopularMovies();
     movies.assignAll(popularMoviesfetched.results);
+
+    this.selectedFilter.value = Filter.popular;
   }
 
   Future<void> getInTheaterMovies() async {
     InTheaterMovies popularMoviesfetched = await _movieService.getInTheaterMovies();
     movies.assignAll(popularMoviesfetched.results);
+
+    this.selectedFilter.value = Filter.inTheater;
   }
 
   Future<void> getTopRatedMovies() async {
     TopRatedMovies popularMoviesfetched = await _movieService.getTopRatedMovies();
     movies.assignAll(popularMoviesfetched.results);
+
+    this.selectedFilter.value = Filter.topRated;
   }
 
   Future<void> getUpcomingMovies() async {
     UpcomingMovies popularMoviesfetched = await _movieService.getUpcomingMovies();
     movies.assignAll(popularMoviesfetched.results);
+
+    this.selectedFilter.value = Filter.upcoming;
   }
 
 }

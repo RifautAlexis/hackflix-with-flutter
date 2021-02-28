@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
 
 class CustomAppbar extends GetView<BackboneController> {
-  const CustomAppbar({this.appbarSubWidget});
-
   final Widget appbarSubWidget;
+
+  CustomAppbar({this.appbarSubWidget});
+
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
 import 'package:hackflix/controllers/home_controller.dart';
+import 'package:hackflix/data/filter.dart';
 import 'package:hackflix/screens/home/animated_filter.dart';
 import 'package:hackflix/screens/home/preview_movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
@@ -42,30 +43,44 @@ class Home extends StatelessWidget {
       );
 
   Widget _buildAppbarSubWidget() {
-    return ListView(
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      children: [
-        ActionChip(
-          label: Text("Popular"),
-          onPressed: () => homeController.getPopularMovies(),
-        ),
-        SizedBox(width: 10),
-        ActionChip(
-          label: Text("In theater"),
-          onPressed: () => homeController.getInTheaterMovies(),
-        ),
-        SizedBox(width: 10),
-        ActionChip(
-          label: Text("Top rated"),
-          onPressed: () => homeController.getTopRatedMovies(),
-        ),
-        SizedBox(width: 10),
-        ActionChip(
-          label: Text("Upcoming"),
-          onPressed: () => homeController.getUpcomingMovies(),
-        ),
-      ],
+    return Obx(
+      () => ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: [
+          FilterChip(
+            label: Text("Popular"),
+            onSelected: (isSelected) => homeController.getPopularMovies(),
+            selectedColor: Colors.limeAccent,
+            selected: homeController.selectedFilter.value == Filter.popular,
+            showCheckmark: false,
+          ),
+          SizedBox(width: 10),
+          FilterChip(
+            label: Text("In theater"),
+            onSelected: (isSelected) => homeController.getInTheaterMovies(),
+            selectedColor: Colors.limeAccent,
+            selected: homeController.selectedFilter.value == Filter.inTheater,
+            showCheckmark: false,
+          ),
+          SizedBox(width: 10),
+          FilterChip(
+            label: Text("Top rated"),
+            onSelected: (isSelected) => homeController.getTopRatedMovies(),
+            selectedColor: Colors.limeAccent,
+            selected: homeController.selectedFilter.value == Filter.topRated,
+            showCheckmark: false,
+          ),
+          SizedBox(width: 10),
+          FilterChip(
+            label: Text("Upcoming"),
+            onSelected: (isSelected) => homeController.getUpcomingMovies(),
+            selectedColor: Colors.limeAccent,
+            selected: homeController.selectedFilter.value == Filter.upcoming,
+            showCheckmark: false,
+          ),
+        ],
+      ),
     );
   }
 }
