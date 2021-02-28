@@ -9,7 +9,7 @@ class MovieDetails extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    final Movie movieDetails = controller.popularMovies
+    final Movie movieDetails = controller.movies
         .firstWhere((Movie movie) => movie.id == id);
 
     return Backbone(

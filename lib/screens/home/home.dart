@@ -14,10 +14,8 @@ class Home extends StatelessWidget {
   Widget build(context) => Backbone(
         appbarSubWidget: _buildAppbarSubWidget(),
         body: Obx(
-          () => Column(
-            children: [
-              Flexible(
-                child: GridView.builder(
+          () => homeController.movies.isNotEmpty
+              ? GridView.builder(
                   controller: backboneController.scrollBottomBarController,
                   padding: EdgeInsets.all(10.0),
                   shrinkWrap: true,
@@ -26,16 +24,16 @@ class Home extends StatelessWidget {
                     mainAxisSpacing: 10,
                     crossAxisCount: 2,
                   ),
-                  itemCount: homeController.popularMovies.length,
+                  itemCount: homeController.movies.length,
                   itemBuilder: (_, index) {
                     return PreviewMovie(
                       index,
                     ); // Give index and not object to test how Get fetch the controller through the widget tree
                   },
+                )
+              : Center(
+                  child: Text("No Movies have been found"),
                 ),
-              ),
-            ],
-          ),
         ),
         floatingActionButton: AnimatedFilter(
           onClick: () {},
@@ -48,13 +46,25 @@ class Home extends StatelessWidget {
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       children: [
-        ActionChip(label: Text("Popular"), onPressed: () => print("Popular"),),
+        ActionChip(
+          label: Text("Popular"),
+          onPressed: () => homeController.getPopularMovies(),
+        ),
         SizedBox(width: 10),
-        ActionChip(label: Text("Newest"), onPressed: () => print("Newest"),),
+        ActionChip(
+          label: Text("In theater"),
+          onPressed: () => homeController.getInTheaterMovies(),
+        ),
         SizedBox(width: 10),
-        ActionChip(label: Text("Top rated"), onPressed: () => print("Top rated"),),
-        SizedBox(width: 15),
-        ActionChip(label: Text("Upcoming"), onPressed: () => print("Upcoming"),),
+        ActionChip(
+          label: Text("Top rated"),
+          onPressed: () => homeController.getTopRatedMovies(),
+        ),
+        SizedBox(width: 10),
+        ActionChip(
+          label: Text("Upcoming"),
+          onPressed: () => homeController.getUpcomingMovies(),
+        ),
       ],
     );
   }
