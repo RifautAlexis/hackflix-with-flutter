@@ -9,9 +9,6 @@ class TextTransaltions extends Translations {
         },
         'en_US': {
           'HELLO_WORLD': 'Hello World',
-        },
-        'de_DE': {
-          'HELLO_WORLD': 'Hallo Welt',
         }
       };
 }
