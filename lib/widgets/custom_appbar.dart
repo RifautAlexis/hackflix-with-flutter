@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
+import 'package:hackflix/widgets/dropdown_lang.dart';
+import 'package:hackflix/data/language.dart';
 
 class CustomAppbar extends GetView<BackboneController> {
   final Widget appbarSubWidget;
+  final String middleText;
+  final List<Widget> actions;
 
-  CustomAppbar({this.appbarSubWidget});
-
+  CustomAppbar(
+      {this.middleText, this.appbarSubWidget, this.actions = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,7 @@ class CustomAppbar extends GetView<BackboneController> {
                         height: 0,
                       ),
                 middle: Text(
-                  "Hackflix with Flutter",
+                  middleText,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -40,6 +45,16 @@ class CustomAppbar extends GetView<BackboneController> {
                         color: Colors.pinkAccent,
                         blurRadius: 3.0,
                       )
+                    ],
+                  ),
+                ),
+                trailing: Padding(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ...actions,
+                      DropdownLanguage(),
                     ],
                   ),
                 ),
