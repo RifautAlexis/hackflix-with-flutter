@@ -20,6 +20,7 @@ class _DropdownLanguageState extends State<DropdownLanguage>
   bool isMenuOpen = false;
   Offset buttonPosition;
   double buttonSize = 25.0;
+  double margin = 5.0;
   OverlayEntry _overlayEntry;
   BorderRadius _borderRadius = BorderRadius.circular(4);
   AnimationController _animationController;
@@ -96,7 +97,7 @@ class _DropdownLanguageState extends State<DropdownLanguage>
         return Positioned(
           top: buttonPosition.dy + buttonSize,
           left: buttonPosition.dx,
-          width: buttonSize + 5,
+          width: buttonSize + margin,
           child: Column(
             children: [
               Align(
@@ -111,15 +112,15 @@ class _DropdownLanguageState extends State<DropdownLanguage>
                 ),
               ),
               Container(
-                height: flags.length * buttonSize + flags.length * 5,
-                width: flags.length * buttonSize + 5,
+                height: flags.length * buttonSize + flags.length * margin,
+                width: flags.length * buttonSize + margin,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   borderRadius: _borderRadius,
                 ),
                 child: Wrap(
-                  runSpacing: 5,
+                  runSpacing: margin,
                   children: List.generate(flags.length, (index) {
                     return GestureDetector(
                       onTap: () {
