@@ -11,7 +11,7 @@ import 'package:hackflix/services/movie_service.dart';
 class HomeController extends GetxController {
   final MovieService _movieService = MovieService();
 
-  var movies = List<Movie>().obs;
+  var movies = <Movie>[].obs;
 
   Rx<Filter> selectedFilter = Filter.popular.obs;
 
@@ -23,28 +23,28 @@ class HomeController extends GetxController {
 
   Future<void> getPopularMovies() async {
     PopularMovies popularMoviesfetched = await _movieService.getPopularMovies();
-    movies.assignAll(popularMoviesfetched.results);
+    movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.popular;
   }
 
   Future<void> getInTheaterMovies() async {
     InTheaterMovies popularMoviesfetched = await _movieService.getInTheaterMovies();
-    movies.assignAll(popularMoviesfetched.results);
+    movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.inTheater;
   }
 
   Future<void> getTopRatedMovies() async {
     TopRatedMovies popularMoviesfetched = await _movieService.getTopRatedMovies();
-    movies.assignAll(popularMoviesfetched.results);
+    movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.topRated;
   }
 
   Future<void> getUpcomingMovies() async {
     UpcomingMovies popularMoviesfetched = await _movieService.getUpcomingMovies();
-    movies.assignAll(popularMoviesfetched.results);
+    movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.upcoming;
   }

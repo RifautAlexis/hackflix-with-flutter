@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:hackflix/bindings/movie_details_binding.dart';
-
 import 'screens/home/home.dart';
 import 'bindings/home_binding.dart';
 import 'screens/movie_details.dart/movie_details.dart';

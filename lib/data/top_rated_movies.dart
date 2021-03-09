@@ -10,10 +10,10 @@ class TopRatedMovies {
         this.totalPages,
     });
 
-    final int page;
-    final List<Movie> results;
-    final int totalResults;
-    final int totalPages;
+    final int? page;
+    final List<Movie>? results;
+    final int? totalResults;
+    final int? totalPages;
 
     factory TopRatedMovies.fromRawJson(String str) => TopRatedMovies.fromJson(json.decode(str));
 
@@ -28,7 +28,7 @@ class TopRatedMovies {
 
     Map<String, dynamic> toJson() => {
         "page": page == null ? null : page,
-        "results": results == null ? null : List<dynamic>.from(results.map((x) => x.toJson())),
+        "results": results == null ? null : List<dynamic>.from(results!.map((x) => x.toJson())),
         "total_results": totalResults == null ? null : totalResults,
         "total_pages": totalPages == null ? null : totalPages,
     };

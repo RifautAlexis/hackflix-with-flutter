@@ -7,7 +7,6 @@ import 'package:hackflix/screens/home/animated_filter.dart';
 import 'package:hackflix/screens/home/preview_movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 import 'package:hackflix/widgets/custom_appbar.dart';
-import 'package:hackflix/widgets/dropdown_lang.dart';
 
 class Home extends StatelessWidget {
   final BackboneController backboneController = Get.find();

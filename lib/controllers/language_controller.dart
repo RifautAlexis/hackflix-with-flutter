@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/data/language.dart';
 
@@ -13,6 +12,6 @@ class LanguageController extends GetxController {
 
   void setLanguage(Language selectedLanguage) {
     currentLanguage.value = selectedLanguage;
-    Get.updateLocale(selectedLanguage.locale);
+    Get.updateLocale(selectedLanguage.locale!);
   }
 }                                         

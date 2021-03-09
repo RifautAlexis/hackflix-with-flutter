@@ -6,8 +6,8 @@ class Dates {
         this.minimum,
     });
 
-    final DateTime maximum;
-    final DateTime minimum;
+    final DateTime? maximum;
+    final DateTime? minimum;
 
     factory Dates.fromRawJson(String str) => Dates.fromJson(json.decode(str));
 
@@ -19,7 +19,7 @@ class Dates {
     );
 
     Map<String, dynamic> toJson() => {
-        "maximum": maximum == null ? null : "${maximum.year.toString().padLeft(4, '0')}-${maximum.month.toString().padLeft(2, '0')}-${maximum.day.toString().padLeft(2, '0')}",
-        "minimum": minimum == null ? null : "${minimum.year.toString().padLeft(4, '0')}-${minimum.month.toString().padLeft(2, '0')}-${minimum.day.toString().padLeft(2, '0')}",
+        "maximum": maximum == null ? null : "${maximum!.year.toString().padLeft(4, '0')}-${maximum!.month.toString().padLeft(2, '0')}-${maximum!.day.toString().padLeft(2, '0')}",
+        "minimum": minimum == null ? null : "${minimum!.year.toString().padLeft(4, '0')}-${minimum!.month.toString().padLeft(2, '0')}-${minimum!.day.toString().padLeft(2, '0')}",
     };
 }

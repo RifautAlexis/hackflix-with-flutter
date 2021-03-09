@@ -16,20 +16,20 @@ class Movie {
         this.voteAverage,
     });
 
-    final String posterPath;
-    final bool adult;
-    final String overview;
-    final DateTime releaseDate;
-    final List<int> genreIds;
-    final int id;
-    final String originalTitle;
-    final OriginalLanguage originalLanguage;
-    final String title;
-    final String backdropPath;
-    final double popularity;
-    final int voteCount;
-    final bool video;
-    final double voteAverage;
+    final String? posterPath;
+    final bool? adult;
+    final String? overview;
+    final DateTime? releaseDate;
+    final List<int>? genreIds;
+    final int? id;
+    final String? originalTitle;
+    final OriginalLanguage? originalLanguage;
+    final String? title;
+    final String? backdropPath;
+    final double? popularity;
+    final int? voteCount;
+    final bool? video;
+    final double? voteAverage;
 
     factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         posterPath: json["poster_path"] == null ? null : json["poster_path"],
@@ -52,11 +52,11 @@ class Movie {
         "poster_path": posterPath == null ? null : posterPath,
         "adult": adult == null ? null : adult,
         "overview": overview == null ? null : overview,
-        "release_date": releaseDate == null ? null : "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
-        "genre_ids": genreIds == null ? null : List<dynamic>.from(genreIds.map((x) => x)),
+        "release_date": releaseDate == null ? null : "${releaseDate!.year.toString().padLeft(4, '0')}-${releaseDate!.month.toString().padLeft(2, '0')}-${releaseDate!.day.toString().padLeft(2, '0')}",
+        "genre_ids": genreIds == null ? null : List<dynamic>.from(genreIds!.map((x) => x)),
         "id": id == null ? null : id,
         "original_title": originalTitle == null ? null : originalTitle,
-        "original_language": originalLanguage == null ? null : originalLanguageValues.reverse[originalLanguage],
+        "original_language": originalLanguage == null ? null : originalLanguageValues.reverse![originalLanguage!],
         "title": title == null ? null : title,
         "backdrop_path": backdropPath == null ? null : backdropPath,
         "popularity": popularity == null ? null : popularity,
@@ -74,11 +74,11 @@ final originalLanguageValues = EnumValues({
 
 class EnumValues<T> {
     Map<String, T> map;
-    Map<T, String> reverseMap;
+    Map<T, String>? reverseMap;
 
     EnumValues(this.map);
 
-    Map<T, String> get reverse {
+    Map<T, String>? get reverse {
         if (reverseMap == null) {
             reverseMap = map.map((k, v) => new MapEntry(v, k));
         }

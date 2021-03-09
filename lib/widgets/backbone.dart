@@ -4,15 +4,15 @@ import 'package:hackflix/widgets/custom_appbar.dart';
 
 class Backbone extends StatelessWidget {
   const Backbone(
-      {@required this.body,
+      {required this.body,
       this.floatingActionButton,
       this.floatingActionButtonLocation,
       this.appBar});
 
   final Widget body;
-  final Widget floatingActionButton;
-  final FloatingActionButtonLocation floatingActionButtonLocation;
-  final CustomAppbar appBar;
+  final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final CustomAppbar? appBar;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Backbone extends StatelessWidget {
         child: Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
-        child: appBar,
+        child: appBar!,
       ),
       body: this.body,
       floatingActionButton: floatingActionButton,

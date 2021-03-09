@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
 import 'package:hackflix/widgets/dropdown_lang.dart';
-import 'package:hackflix/data/language.dart';
 
 class CustomAppbar extends GetView<BackboneController> {
-  final Widget appbarSubWidget;
-  final String middleText;
+  final Widget? appbarSubWidget;
+  final String? middleText;
   final List<Widget> actions;
 
   CustomAppbar(
@@ -18,7 +16,7 @@ class CustomAppbar extends GetView<BackboneController> {
     return Obx(
       () => AnimatedContainer(
         duration: Duration(milliseconds: 500),
-        height: controller.showAppbar.value ? 100 : 0,
+        height: controller.showAppbar.value! ? 100 : 0,
         color: Colors.blueAccent,
         alignment: Alignment.center,
         child: Column(
@@ -34,7 +32,7 @@ class CustomAppbar extends GetView<BackboneController> {
                         height: 0,
                       ),
                 middle: Text(
-                  middleText,
+                  middleText!,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -84,7 +82,7 @@ class CustomAppbar extends GetView<BackboneController> {
         height: 0,
       ),
       Expanded(
-        child: appbarSubWidget,
+        child: appbarSubWidget!,
       )
     ];
   }

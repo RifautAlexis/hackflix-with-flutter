@@ -7,7 +7,7 @@ import 'package:hackflix/widgets/svg_button.dart';
 
 class DropdownLanguage extends StatefulWidget {
   const DropdownLanguage({
-    Key key,
+    Key? key,
   }) : super(key: key);
   @override
   _DropdownLanguageState createState() => _DropdownLanguageState();
@@ -15,21 +15,21 @@ class DropdownLanguage extends StatefulWidget {
 
 class _DropdownLanguageState extends State<DropdownLanguage>
     with SingleTickerProviderStateMixin {
-  GlobalKey _key;
+  GlobalKey? _key;
   final LanguageController languageController = Get.find();
   bool isMenuOpen = false;
-  Offset buttonPosition;
+  late Offset buttonPosition;
   double buttonSize = 25.0;
   double margin = 5.0;
-  OverlayEntry _overlayEntry;
+  late OverlayEntry _overlayEntry;
   BorderRadius _borderRadius = BorderRadius.circular(4);
-  AnimationController _animationController;
+  late AnimationController _animationController;
   final Color backgroundColor = Color(0xFFF67C0B9);
   final Color iconColor = Colors.black;
   final List<SvgPicture> flags = Language.languages
       .map<SvgPicture>(
         (e) => SvgPicture.asset(
-          e.flagPath,
+          e.flagPath!,
           semanticsLabel: e.label,
         ),
       )
@@ -52,7 +52,7 @@ class _DropdownLanguageState extends State<DropdownLanguage>
   }
 
   findButton() {
-    RenderBox renderBox = _key.currentContext.findRenderObject();
+    RenderBox renderBox = _key!.currentContext!.findRenderObject() as RenderBox;
     buttonPosition = renderBox.localToGlobal(Offset.zero);
   }
 
@@ -66,7 +66,7 @@ class _DropdownLanguageState extends State<DropdownLanguage>
     findButton();
     _animationController.forward();
     _overlayEntry = _overlayEntryBuilder();
-    Overlay.of(context).insert(_overlayEntry);
+    Overlay.of(context)!.insert(_overlayEntry);
     isMenuOpen = !isMenuOpen;
   }
 
@@ -78,8 +78,8 @@ class _DropdownLanguageState extends State<DropdownLanguage>
         borderRadius: _borderRadius,
       ),
       child: SvgButton(
-        svgPath: languageController.currentLanguage.value.flagPath,
-        label: languageController.currentLanguage.value.label,
+        svgPath: languageController.currentLanguage.value!.flagPath,
+        label: languageController.currentLanguage.value!.label,
         onPressed: () {
           if (isMenuOpen) {
             closeMenu();

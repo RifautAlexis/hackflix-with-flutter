@@ -10,11 +10,11 @@ class InTheaterMovies {
         this.totalResults,
     });
 
-    final int page;
-    final List<Movie> results;
-    final Dates dates;
-    final int totalPages;
-    final int totalResults;
+    final int? page;
+    final List<Movie>? results;
+    final Dates? dates;
+    final int? totalPages;
+    final int? totalResults;
 
     factory InTheaterMovies.fromJson(Map<String, dynamic> json) => InTheaterMovies(
         page: json["page"] == null ? null : json["page"],
@@ -26,8 +26,8 @@ class InTheaterMovies {
 
     Map<String, dynamic> toJson() => {
         "page": page == null ? null : page,
-        "results": results == null ? null : List<dynamic>.from(results.map((x) => x.toJson())),
-        "dates": dates == null ? null : dates.toJson(),
+        "results": results == null ? null : List<dynamic>.from(results!.map((x) => x.toJson())),
+        "dates": dates == null ? null : dates!.toJson(),
         "total_pages": totalPages == null ? null : totalPages,
         "total_results": totalResults == null ? null : totalResults,
     };

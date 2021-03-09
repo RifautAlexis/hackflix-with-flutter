@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Language {
-  String language;
-  String region;
-  String flagPath;
-  String label;
-  Locale locale;
+  String? language;
+  String? region;
+  String? flagPath;
+  String? label;
+  Locale? locale;
 
-  Language({@required this.language, @required this.region, @required this.flagPath, @required this.label, @required this.locale});
+  Language({required this.language, required this.region, required this.flagPath, required this.label, required this.locale});
 
   Language.initializer() {
     this.language = "en";

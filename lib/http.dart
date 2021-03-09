@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:hackflix/data/movie.dart';
 
 class Http {
-  static Http _instance;
-  Dio _dio;
-  BaseOptions _options;
+  static Http? _instance;
+  late Dio _dio;
+  BaseOptions? _options;
 
   Http._internal() {
     _options = BaseOptions(
@@ -20,22 +17,22 @@ class Http {
 
   factory Http() => _instance ?? Http._internal();
 
-  Future<Response> get(String url, {Map<String, dynamic> queryParameters}) {
+  Future<Response> get(String url, {Map<String, dynamic>? queryParameters}) {
     return _dio.get(url, queryParameters: queryParameters);
   }
 
   Future<dynamic> post(String url,
-      {dynamic body, Map<String, dynamic> queryParameters}) async {
+      {dynamic body, Map<String, dynamic>? queryParameters}) async {
     return await _dio.post(url, data: body, queryParameters: queryParameters);
   }
 
   Future<dynamic> put(String url,
-      {Map<String, dynamic> queryParameters}) async {
+      {Map<String, dynamic>? queryParameters}) async {
     return await _dio.put(url, queryParameters: queryParameters);
   }
 
   Future<dynamic> delete(String url,
-      {dynamic body, Map<String, dynamic> queryParameters}) async {
+      {dynamic body, Map<String, dynamic>? queryParameters}) async {
     return await _dio.delete(url, data: body, queryParameters: queryParameters);
   }
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class AnimatedFilter extends StatefulWidget {
-  final VoidCallback onClick;
+  final VoidCallback? onClick;
 
-  AnimatedFilter({Key key, this.onClick}) : super(key: key);
+  AnimatedFilter({Key? key, this.onClick}) : super(key: key);
 
   @override
   _AnimatedFilterState createState() => _AnimatedFilterState();
@@ -12,8 +12,8 @@ class AnimatedFilter extends StatefulWidget {
 
 class _AnimatedFilterState extends State<AnimatedFilter>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<Color> _colorAnimation;
+  late AnimationController _animationController;
+  late Animation<Color?> _colorAnimation;
 
   final double expandedSize = 180.0;
   final double hiddenSize = 20.0;
@@ -44,7 +44,7 @@ class _AnimatedFilterState extends State<AnimatedFilter>
       height: expandedSize,
       child: AnimatedBuilder(
         animation: _animationController,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Stack(
             alignment: Alignment.center,
             children: [
@@ -121,7 +121,7 @@ class _AnimatedFilterState extends State<AnimatedFilter>
   }
 
   _onIconClick() {
-    widget.onClick();
+    widget.onClick!();
     close();
   }
 

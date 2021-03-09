@@ -16,7 +16,7 @@ class PreviewMovie extends GetView<HomeController> {
         alignment: Alignment.center,
         child: Center(
           child: Text(
-            controller.movies[index].title,
+            controller.movies[index].title!,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25.0,

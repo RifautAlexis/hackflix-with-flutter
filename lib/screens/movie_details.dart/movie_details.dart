@@ -5,7 +5,7 @@ import 'package:hackflix/data/movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 
 class MovieDetails extends GetView<HomeController> {
-  final int id = int.parse(Get.parameters['id']);
+  final int id = int.parse(Get.parameters['id']!);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MovieDetails extends GetView<HomeController> {
     return Backbone(
       body: Column(
         children: [
-          Text(movieDetails.title),
+          Text(movieDetails.title!),
         ],
       ),
     );
