@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/routes.dart';
 import 'package:hackflix/translations/translations.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
-void main() {
+void main() async {
+  await DotEnv.load(fileName: "environments/.env");
+
   runApp(
     GetMaterialApp(
       theme: ThemeData(

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Http {
   static Http? _instance;
@@ -7,8 +8,8 @@ class Http {
 
   Http._internal() {
     _options = BaseOptions(
-        baseUrl: 'https://api.themoviedb.org',
-        queryParameters: {"api_key": "f0d38b9f8e6b4b746080113dc4561a33"});
+        baseUrl: env['API_URL']!,
+        queryParameters: {"api_key": env['API_KEY']});
 
     _dio = Dio(_options);
 
