@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/routes.dart';
+import 'package:hackflix/theme/theme.dart';
 import 'package:hackflix/translations/translations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
@@ -9,10 +10,7 @@ void main() async {
 
   runApp(
     GetMaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: CustomTheme.lightTheme,
       initialRoute: '/',
       getPages: routes,
       // unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),

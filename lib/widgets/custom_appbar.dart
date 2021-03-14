@@ -52,7 +52,6 @@ class CustomAppbar extends GetView<BackboneController> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ...actions,
-                      DropdownLanguage(),
                     ],
                   ),
                 ),

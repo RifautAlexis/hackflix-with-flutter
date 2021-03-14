@@ -7,6 +7,8 @@ import 'package:hackflix/screens/home/animated_filter.dart';
 import 'package:hackflix/screens/home/preview_movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 import 'package:hackflix/widgets/custom_appbar.dart';
+import 'package:hackflix/widgets/dropdown_lang.dart';
+import 'package:hackflix/widgets/theme_picker.dart';
 
 class Home extends StatelessWidget {
   final BackboneController backboneController = Get.find();
@@ -44,9 +46,13 @@ class Home extends StatelessWidget {
       );
 
   CustomAppbar _buildAppBar() => CustomAppbar(
-    middleText: 'HELLO_WORLD'.tr,
-    appbarSubWidget: _buildAppbarSubWidget(),
-  );
+        middleText: 'HELLO_WORLD'.tr,
+        appbarSubWidget: _buildAppbarSubWidget(),
+        actions: [
+          ThemePicker(),
+          DropdownLanguage(),
+        ],
+      );
 
   Widget _buildAppbarSubWidget() {
     return Obx(
@@ -54,36 +60,28 @@ class Home extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         children: [
-          FilterChip(
+          ChoiceChip(
             label: Text("Popular"),
             onSelected: (isSelected) => homeController.getPopularMovies(),
-            selectedColor: Colors.limeAccent,
             selected: homeController.selectedFilter.value == Filter.popular,
-            showCheckmark: false,
           ),
           SizedBox(width: 10),
-          FilterChip(
+          ChoiceChip(
             label: Text("In theater"),
             onSelected: (isSelected) => homeController.getInTheaterMovies(),
-            selectedColor: Colors.limeAccent,
             selected: homeController.selectedFilter.value == Filter.inTheater,
-            showCheckmark: false,
           ),
           SizedBox(width: 10),
-          FilterChip(
+          ChoiceChip(
             label: Text("Top rated"),
             onSelected: (isSelected) => homeController.getTopRatedMovies(),
-            selectedColor: Colors.limeAccent,
             selected: homeController.selectedFilter.value == Filter.topRated,
-            showCheckmark: false,
           ),
           SizedBox(width: 10),
-          FilterChip(
+          ChoiceChip(
             label: Text("Upcoming"),
             onSelected: (isSelected) => homeController.getUpcomingMovies(),
-            selectedColor: Colors.limeAccent,
             selected: homeController.selectedFilter.value == Filter.upcoming,
-            showCheckmark: false,
           ),
         ],
       ),
