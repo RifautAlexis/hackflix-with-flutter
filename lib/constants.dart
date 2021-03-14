@@ -1,0 +1,1 @@
+const double heightAppBar = 30.0;

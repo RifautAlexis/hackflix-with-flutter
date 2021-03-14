@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackflix/constants.dart';
 import 'package:hackflix/widgets/custom_appbar.dart';
 
 class Backbone extends StatelessWidget {
@@ -21,7 +22,7 @@ class Backbone extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(30),
+          preferredSize: Size.fromHeight(heightAppBar),
           child: appBar!,
         ),
         body: this.body,
