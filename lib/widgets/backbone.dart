@@ -19,15 +19,15 @@ class Backbone extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.red, statusBarBrightness: Brightness.light));
     return SafeArea(
-        child: Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: appBar!,
-      ),
-      body: this.body,
-      floatingActionButton: floatingActionButton,
-      floatingActionButtonLocation: floatingActionButtonLocation,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(30),
+          child: appBar!,
         ),
+        body: this.body,
+        floatingActionButton: floatingActionButton,
+        floatingActionButtonLocation: floatingActionButtonLocation,
+      ),
     );
   }
 }

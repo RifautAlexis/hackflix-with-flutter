@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
-import 'package:hackflix/widgets/dropdown_lang.dart';
 
 class CustomAppbar extends GetView<BackboneController> {
   final Widget? appbarSubWidget;
@@ -50,18 +49,37 @@ class CustomAppbar extends GetView<BackboneController> {
                   padding: EdgeInsets.only(right: 10),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ...actions,
-                    ],
+                    children: [..._buildActions()],
                   ),
                 ),
               ),
             ),
-            ..._buildAppbarSubWidget(),
+            // ..._buildAppbarSubWidget(),
           ],
         ),
       ),
     );
+  }
+
+  List<Widget> _buildActions() {
+    List<Widget> fittedActions = [];
+
+    for (var index = 0; index < actions.length; index++) {
+      fittedActions.add(
+        FittedBox(
+          child: actions[index],
+        ),
+      );
+
+      fittedActions.addIf(
+        index + 1 < actions.length,
+        SizedBox(
+          width: 5.0,
+        ),
+      );
+    }
+
+    return fittedActions;
   }
 
   List<Widget> _buildAppbarSubWidget() {
@@ -80,9 +98,13 @@ class CustomAppbar extends GetView<BackboneController> {
         thickness: 1,
         height: 0,
       ),
-      Expanded(
-        child: appbarSubWidget!,
-      )
+      SizedBox(
+        height: 5,
+      ),
+      Expanded(child: appbarSubWidget!),
+      SizedBox(
+        height: 5,
+      ),
     ];
   }
 }
