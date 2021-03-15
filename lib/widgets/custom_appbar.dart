@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hackflix/constants.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
 
 class CustomAppbar extends GetView<BackboneController> {
@@ -15,7 +16,7 @@ class CustomAppbar extends GetView<BackboneController> {
     return Obx(
       () => AnimatedContainer(
         duration: Duration(milliseconds: 500),
-        height: controller.showAppbar.value! ? 100 : 0,
+        height: controller.showAppbar.value! ? heightAppBar : 0,
         color: Colors.blueAccent,
         alignment: Alignment.center,
         child: Column(
