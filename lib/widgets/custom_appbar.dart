@@ -17,7 +17,7 @@ class CustomAppbar extends GetView<BackboneController> {
       () => AnimatedContainer(
         duration: Duration(milliseconds: 500),
         height: controller.showAppbar.value! ? heightAppBar : 0,
-        color: Colors.blueAccent,
+        color: Get.theme!.backgroundColor,
         alignment: Alignment.center,
         child: Column(
           children: [
@@ -55,7 +55,6 @@ class CustomAppbar extends GetView<BackboneController> {
                 ),
               ),
             ),
-            // ..._buildAppbarSubWidget(),
           ],
         ),
       ),
@@ -81,31 +80,5 @@ class CustomAppbar extends GetView<BackboneController> {
     }
 
     return fittedActions;
-  }
-
-  List<Widget> _buildAppbarSubWidget() {
-    if (appbarSubWidget == null) {
-      return [
-        Container(
-          width: 0,
-          height: 0,
-        )
-      ];
-    }
-
-    return [
-      Divider(
-        color: Colors.grey,
-        thickness: 1,
-        height: 0,
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      Expanded(child: appbarSubWidget!),
-      SizedBox(
-        height: 5,
-      ),
-    ];
   }
 }

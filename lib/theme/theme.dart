@@ -7,7 +7,7 @@ class CustomTheme {
     return ThemeData(
       brightness: Brightness.light,
       primarySwatch: CustomColors.primaryLight,
-      scaffoldBackgroundColor: CustomColors.backgroundColor,
+      scaffoldBackgroundColor: CustomColors.backgroundColorLight,
       fontFamily: CustomFont.fontFamily,
       textTheme: ThemeData.light().textTheme,
       chipTheme: ChipThemeData(
@@ -26,9 +26,10 @@ class CustomTheme {
   static ThemeData get darkTheme {
     return ThemeData(
       brightness: Brightness.dark,
-        primarySwatch: Colors.grey,
-        scaffoldBackgroundColor: Colors.black,
-        fontFamily: CustomFont.fontFamily,
-        textTheme: ThemeData.dark().textTheme);
+      primarySwatch: CustomColors.primaryDark,
+      scaffoldBackgroundColor: CustomColors.backgroundColorDark,
+      fontFamily: CustomFont.fontFamily,
+      textTheme: ThemeData.dark().textTheme,
+    );
   }
 }

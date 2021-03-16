@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hackflix/constants.dart';
+import 'package:hackflix/theme/colors.dart';
 import 'package:hackflix/widgets/custom_appbar.dart';
 
 class Backbone extends StatelessWidget {
@@ -14,11 +16,18 @@ class Backbone extends StatelessWidget {
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final CustomAppbar? appBar;
-
+  
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.red, statusBarBrightness: Brightness.light));
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Get.isDarkMode
+            ? CustomColors.primaryDarkShade300
+            : CustomColors.primaryLightShade300,
+      ),
+    );
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(

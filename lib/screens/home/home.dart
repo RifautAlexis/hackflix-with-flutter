@@ -28,11 +28,6 @@ class Home extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Column(
                   children: [
-                    Divider(
-                      color: Colors.grey,
-                      thickness: 1,
-                      height: 0,
-                    ),
                     SizedBox(
                       height: 5.0,
                     ),
