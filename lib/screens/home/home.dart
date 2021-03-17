@@ -16,12 +16,12 @@ class Home extends StatelessWidget {
   final HomeController homeController = Get.find();
 
   @override
-  Widget build(context) => Backbone(
-        appBar: _buildAppBar(),
-        body: Column(
-          children: [
-            Obx(
-              () => AnimatedContainer(
+  Widget build(context) => Obx(
+        () => Backbone(
+          appBar: _buildAppBar(),
+          body: Column(
+            children: [
+              AnimatedContainer(
                 duration: Duration(milliseconds: 500),
                 height: backboneController.showAppbar.value! ? 40.0 : 0,
                 color: Get.theme!.backgroundColor,
@@ -32,7 +32,10 @@ class Home extends StatelessWidget {
                       height: 5.0,
                     ),
                     Expanded(
-                      child: Container(height: 30.0, child: _buildAppbarSubWidget(),),
+                      child: Container(
+                        height: 30.0,
+                        child: _buildAppbarSubWidget(),
+                      ),
                     ),
                     SizedBox(
                       height: 5.0,
@@ -40,10 +43,8 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Expanded(
-              child: Obx(
-                () => homeController.movies.isNotEmpty
+              Expanded(
+                child: homeController.movies.isNotEmpty
                     ? GridView.builder(
                         controller:
                             backboneController.scrollBottomBarController,
@@ -62,26 +63,29 @@ class Home extends StatelessWidget {
                         },
                       )
                     : Center(
-                        child: Text("No Movies have been found"),
+                        child: Text("NO_MOVIES_HAVE_BEEN_FOUND".tr),
                       ),
               ),
-            ),
-          ],
+            ],
+          ),
+          floatingActionButton: AnimatedFilter(
+            onClick: () {},
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         ),
-        floatingActionButton: AnimatedFilter(
-          onClick: () {},
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       );
 
-  CustomAppbar _buildAppBar() => CustomAppbar(
-        middleText: 'HELLO_WORLD'.tr,
-        appbarSubWidget: _buildAppbarSubWidget(),
-        actions: [
-          ThemePicker(),
-          DropdownLanguage(),
-        ],
-      );
+  CustomAppbar _buildAppBar() {
+    return CustomAppbar(
+      middleText:
+          Filters.FilterMapping[homeController.selectedFilter.value]!.tr,
+      appbarSubWidget: _buildAppbarSubWidget(),
+      actions: [
+        ThemePicker(),
+        DropdownLanguage(),
+      ],
+    );
+  }
 
   Widget _buildAppbarSubWidget() {
     return Obx(
@@ -90,25 +94,25 @@ class Home extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           ChoiceChip(
-            label: Text("Popular"),
+            label: Text(Filters.FilterMapping[Filter.popular]!.tr),
             onSelected: (isSelected) => homeController.getPopularMovies(),
             selected: homeController.selectedFilter.value == Filter.popular,
           ),
           SizedBox(width: 10),
           ChoiceChip(
-            label: Text("In theater"),
+            label: Text(Filters.FilterMapping[Filter.inTheater]!.tr),
             onSelected: (isSelected) => homeController.getInTheaterMovies(),
             selected: homeController.selectedFilter.value == Filter.inTheater,
           ),
           SizedBox(width: 10),
           ChoiceChip(
-            label: Text("Top rated"),
+            label: Text(Filters.FilterMapping[Filter.topRated]!.tr),
             onSelected: (isSelected) => homeController.getTopRatedMovies(),
             selected: homeController.selectedFilter.value == Filter.topRated,
           ),
           SizedBox(width: 10),
           ChoiceChip(
-            label: Text("Upcoming"),
+            label: Text(Filters.FilterMapping[Filter.upcoming]!.tr),
             onSelected: (isSelected) => homeController.getUpcomingMovies(),
             selected: homeController.selectedFilter.value == Filter.upcoming,
           ),
