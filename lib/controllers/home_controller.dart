@@ -26,7 +26,6 @@ class HomeController extends GetxController {
     movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.popular;
-    print(this.selectedFilter.value);
   }
 
   Future<void> getInTheaterMovies() async {
@@ -34,7 +33,6 @@ class HomeController extends GetxController {
     movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.inTheater;
-    print(this.selectedFilter.value);
   }
 
   Future<void> getTopRatedMovies() async {
@@ -42,7 +40,6 @@ class HomeController extends GetxController {
     movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.topRated;
-    print(this.selectedFilter.value);
   }
 
   Future<void> getUpcomingMovies() async {
@@ -50,7 +47,6 @@ class HomeController extends GetxController {
     movies.assignAll(popularMoviesfetched.results!);
 
     this.selectedFilter.value = Filter.upcoming;
-    print(this.selectedFilter.value);
   }
 
 }
