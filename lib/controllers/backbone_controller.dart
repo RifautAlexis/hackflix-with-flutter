@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 class BackboneController extends GetxController {
   RxBool showAppbar = true.obs;
-  ScrollController scrollBottomBarController = new ScrollController();
+  ScrollController scrollBottomBarController = ScrollController();
   bool isScrollingDown = false;
 
   @override
