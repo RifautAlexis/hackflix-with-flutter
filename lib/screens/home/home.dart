@@ -26,21 +26,9 @@ class Home extends StatelessWidget {
                 height: backboneController.showAppbar.value! ? 40.0 : 0,
                 color: Get.theme!.backgroundColor,
                 alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 30.0,
-                        child: _buildAppbarSubWidget(),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                  ],
+                child: Container(
+                  height: 30.0,
+                  child: _buildAppbarSubWidget(),
                 ),
               ),
               Expanded(
