@@ -20,11 +20,11 @@ class _AnimatedFilterState extends State<AnimatedFilter>
 
   @override
   void initState() {
-    _animationController = new AnimationController(
+    _animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 200),
     );
-    _colorAnimation = new ColorTween(
+    _colorAnimation = ColorTween(
       begin: Colors.pink,
       end: Colors.pink[800],
     ).animate(_animationController);
