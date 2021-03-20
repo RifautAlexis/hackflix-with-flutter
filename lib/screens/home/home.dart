@@ -56,10 +56,10 @@ class Home extends StatelessWidget {
               ),
             ],
           ),
-          floatingActionButton: AnimatedFilter(
-            onClick: () {},
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          // floatingActionButton: AnimatedFilter(
+          //   onClick: () {},
+          // ),
+          // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         ),
       );
 
