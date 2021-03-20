@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/constants.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
+import 'package:hackflix/theme/theme.dart';
 
 class CustomAppbar extends GetView<BackboneController> {
   final Widget? appbarSubWidget;
@@ -33,18 +34,7 @@ class CustomAppbar extends GetView<BackboneController> {
                       ),
                 middle: Text(
                   middleText!,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
-                    shadows: [
-                      BoxShadow(
-                        offset: Offset(3, 3),
-                        color: Colors.pinkAccent,
-                        blurRadius: 3.0,
-                      )
-                    ],
-                  ),
+                  style: Get.textTheme!.titleCustomAppbar,
                 ),
                 trailing: Padding(
                   padding: EdgeInsets.only(right: 10),

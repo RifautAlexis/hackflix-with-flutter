@@ -19,7 +19,7 @@ class PreviewMovie extends GetView<HomeController> {
           child: Text(
             controller.movies[index].title!,
             textAlign: TextAlign.center,
-            style: Get.textTheme!.textOverPreviewMovie
+            style: Get.textTheme!.textOverPreviewMovie,
           ),
         ),
         decoration: BoxDecoration(

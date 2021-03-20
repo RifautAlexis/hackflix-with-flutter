@@ -49,4 +49,32 @@ extension CustomTextStyles on TextTheme {
             color: CustomColors.textColorOverPreviewMovieLight,
           );
   }
+
+  TextStyle get titleCustomAppbar {
+    return Get.isDarkMode
+        ? TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 21,
+            shadows: [
+              BoxShadow(
+                offset: Offset(3, 3),
+                color: CustomColors.textColorOverPreviewMovieDark,
+                blurRadius: 3.0,
+              )
+            ],
+          )
+        : TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 21,
+            shadows: [
+              BoxShadow(
+                offset: Offset(3, 3),
+                color: CustomColors.textColorOverPreviewMovieLight,
+                blurRadius: 3.0,
+              )
+            ],
+          );
+  }
 }
