@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/language_controller.dart';
 import 'package:hackflix/data/language.dart';
+import 'package:hackflix/theme/colors.dart';
 import 'package:hackflix/widgets/svg_button.dart';
+import 'package:hackflix/theme/theme.dart';
 
 class DropdownLanguage extends StatefulWidget {
   const DropdownLanguage({
@@ -24,8 +26,6 @@ class _DropdownLanguageState extends State<DropdownLanguage>
   late OverlayEntry _overlayEntry;
   BorderRadius _borderRadius = BorderRadius.circular(4);
   late AnimationController _animationController;
-  final Color backgroundColor = Color(0xFFF67C0B9);
-  final Color iconColor = Colors.black;
   final List<SvgPicture> flags = Language.languages
       .map<SvgPicture>(
         (e) => SvgPicture.asset(
@@ -107,7 +107,10 @@ class _DropdownLanguageState extends State<DropdownLanguage>
                   child: Container(
                     width: 17,
                     height: 17,
-                    color: backgroundColor,
+                    color: Get.changeColors(
+                      CustomColors.primaryDarkContrast01,
+                      CustomColors.primaryLightContrast01,
+                    ),
                   ),
                 ),
               ),
@@ -116,7 +119,10 @@ class _DropdownLanguageState extends State<DropdownLanguage>
                 width: flags.length * buttonSize + margin,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: backgroundColor,
+                  color: Get.changeColors(
+                    CustomColors.primaryDarkContrast01,
+                    CustomColors.primaryLightContrast01,
+                  ),
                   borderRadius: _borderRadius,
                 ),
                 child: Wrap(

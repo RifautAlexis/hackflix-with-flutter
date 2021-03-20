@@ -78,3 +78,13 @@ extension CustomTextStyles on TextTheme {
           );
   }
 }
+
+extension HandleContext on GetInterface {
+  Color changeColors(Color colorDarktheme, Color colorLightheme) {
+    return Get.isDarkMode ? colorDarktheme : colorLightheme;
+  }
+
+  Icon changeSvg(Icon iconDarktheme, Icon iconLightheme) {
+    return Get.isDarkMode ? iconDarktheme : iconLightheme;
+  }
+}
