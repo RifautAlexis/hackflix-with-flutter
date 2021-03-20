@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hackflix/theme/colors.dart';
 import 'package:hackflix/theme/font.dart';
 
@@ -31,5 +32,21 @@ class CustomTheme {
       fontFamily: CustomFont.fontFamily,
       textTheme: ThemeData.dark().textTheme,
     );
+  }
+}
+
+extension CustomTextStyles on TextTheme {
+  TextStyle get textOverPreviewMovie {
+    return Get.isDarkMode
+        ? TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+            color: CustomColors.textColorOverPreviewMovieDark,
+          )
+        : TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+            color: CustomColors.textColorOverPreviewMovieLight,
+          );
   }
 }
