@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/theme/theme.dart';
 
-class ThemePicker extends StatelessWidget {
+class ThemePickerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

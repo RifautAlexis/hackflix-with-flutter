@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class AnimatedFilter extends StatefulWidget {
+class AnimatedFilterWidget extends StatefulWidget {
   final VoidCallback? onClick;
 
-  AnimatedFilter({Key? key, this.onClick}) : super(key: key);
+  AnimatedFilterWidget({Key? key, this.onClick}) : super(key: key);
 
   @override
   _AnimatedFilterState createState() => _AnimatedFilterState();
 }
 
-class _AnimatedFilterState extends State<AnimatedFilter>
+class _AnimatedFilterState extends State<AnimatedFilterWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Color?> _colorAnimation;

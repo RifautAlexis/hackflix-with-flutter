@@ -11,13 +11,13 @@ import 'package:hackflix/widgets/custom_appbar.dart';
 import 'package:hackflix/widgets/dropdown_lang.dart';
 import 'package:hackflix/widgets/theme_picker.dart';
 
-class Home extends StatelessWidget {
+class HomeWidget extends StatelessWidget {
   final BackboneController backboneController = Get.find();
   final HomeController homeController = Get.find();
 
   @override
   Widget build(context) => Obx(
-        () => Backbone(
+        () => BackboneWidget(
           appBar: _buildAppBar(),
           body: Column(
             children: [
@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
                         ),
                         itemCount: homeController.movies.length,
                         itemBuilder: (_, index) {
-                          return PreviewMovie(
+                          return PreviewMovieWidget(
                             index,
                           ); // Give index and not object to test how Get fetch the controller through the widget tree
                         },
@@ -63,14 +63,14 @@ class Home extends StatelessWidget {
         ),
       );
 
-  CustomAppbar _buildAppBar() {
-    return CustomAppbar(
+  CustomAppbarWidget _buildAppBar() {
+    return CustomAppbarWidget(
       middleText:
           Filters.FilterMapping[homeController.selectedFilter.value]!.tr,
       appbarSubWidget: _buildAppbarSubWidget(),
       actions: [
-        ThemePicker(),
-        DropdownLanguage(),
+        ThemePickerWidget(),
+        DropdownLanguageWidget(),
       ],
     );
   }

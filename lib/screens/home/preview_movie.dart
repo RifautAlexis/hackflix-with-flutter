@@ -4,10 +4,10 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:hackflix/controllers/home_controller.dart';
 import 'package:hackflix/theme/theme.dart';
 
-class PreviewMovie extends GetView<HomeController> {
+class PreviewMovieWidget extends GetView<HomeController> {
   final int index;
 
-  PreviewMovie(this.index);
+  PreviewMovieWidget(this.index);
 
   @override
   Widget build(BuildContext context) {

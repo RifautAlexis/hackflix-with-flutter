@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SvgButton extends StatelessWidget {
+class SvgButtonWidget extends StatelessWidget {
   final String? svgPath;
   final String? label;
   final VoidCallback? onPressed;
 
-  const SvgButton(
+  const SvgButtonWidget(
       {Key? key, required this.svgPath, required this.label, this.onPressed})
       : super(key: key);
 

@@ -6,8 +6,8 @@ import 'package:hackflix/theme/colors.dart';
 import 'package:hackflix/widgets/custom_appbar.dart';
 import 'package:hackflix/theme/theme.dart';
 
-class Backbone extends StatelessWidget {
-  const Backbone(
+class BackboneWidget extends StatelessWidget {
+  const BackboneWidget(
       {required this.body,
       this.floatingActionButton,
       this.floatingActionButtonLocation,
@@ -16,7 +16,7 @@ class Backbone extends StatelessWidget {
   final Widget body;
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
-  final CustomAppbar? appBar;
+  final CustomAppbarWidget? appBar;
 
   @override
   Widget build(BuildContext context) {

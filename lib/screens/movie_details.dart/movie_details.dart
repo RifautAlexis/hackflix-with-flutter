@@ -4,7 +4,7 @@ import 'package:hackflix/controllers/home_controller.dart';
 import 'package:hackflix/data/movie.dart';
 import 'package:hackflix/widgets/backbone.dart';
 
-class MovieDetails extends GetView<HomeController> {
+class MovieDetailsWidget extends GetView<HomeController> {
   final int id = int.parse(Get.parameters['id']!);
 
   @override
@@ -12,7 +12,7 @@ class MovieDetails extends GetView<HomeController> {
     final Movie movieDetails = controller.movies
         .firstWhere((Movie movie) => movie.id == id);
 
-    return Backbone(
+    return BackboneWidget(
       body: Column(
         children: [
           Text(movieDetails.title!),

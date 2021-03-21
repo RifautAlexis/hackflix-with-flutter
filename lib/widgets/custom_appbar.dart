@@ -4,12 +4,12 @@ import 'package:hackflix/constants.dart';
 import 'package:hackflix/controllers/backbone_controller.dart';
 import 'package:hackflix/theme/theme.dart';
 
-class CustomAppbar extends GetView<BackboneController> {
+class CustomAppbarWidget extends GetView<BackboneController> {
   final Widget? appbarSubWidget;
   final String? middleText;
   final List<Widget> actions;
 
-  CustomAppbar(
+  CustomAppbarWidget(
       {this.middleText, this.appbarSubWidget, this.actions = const []});
 
   @override

@@ -7,15 +7,15 @@ import 'package:hackflix/theme/colors.dart';
 import 'package:hackflix/widgets/svg_button.dart';
 import 'package:hackflix/theme/theme.dart';
 
-class DropdownLanguage extends StatefulWidget {
-  const DropdownLanguage({
+class DropdownLanguageWidget extends StatefulWidget {
+  const DropdownLanguageWidget({
     Key? key,
   }) : super(key: key);
   @override
   _DropdownLanguageState createState() => _DropdownLanguageState();
 }
 
-class _DropdownLanguageState extends State<DropdownLanguage>
+class _DropdownLanguageState extends State<DropdownLanguageWidget>
     with SingleTickerProviderStateMixin {
   GlobalKey? _key;
   final LanguageController languageController = Get.find();
@@ -77,7 +77,7 @@ class _DropdownLanguageState extends State<DropdownLanguage>
       decoration: BoxDecoration(
         borderRadius: _borderRadius,
       ),
-      child: SvgButton(
+      child: SvgButtonWidget(
         svgPath: languageController.currentLanguage.value!.flagPath,
         label: languageController.currentLanguage.value!.label,
         onPressed: () {
