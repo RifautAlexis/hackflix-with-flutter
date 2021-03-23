@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hackflix/data/in_theater_movies.dart';
+import 'package:hackflix/data/movie_details.dart';
 import 'package:hackflix/data/popular_movies.dart';
 import 'package:hackflix/data/top_rated_movies.dart';
 import 'package:hackflix/data/upcoming_movies.dart';
@@ -46,5 +47,14 @@ class MovieService {
     
     Response<dynamic> response = await _http.get('/3/movie/upcoming', queryParameters: queryParameters);
     return UpcomingMovies.fromJson(response.data);
+  }
+
+  Future<MovieDetails> getMovieDetails(int movieId) async {
+    Map<String, dynamic> queryParameters = {
+      "language": "en-US"
+    };
+
+    Response<dynamic> response = await _http.get('/3/movie/${movieId}', queryParameters: queryParameters);
+    return MovieDetails.fromJson(response.data);
   }
 }
