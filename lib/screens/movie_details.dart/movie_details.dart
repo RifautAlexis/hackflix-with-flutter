@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hackflix/controllers/movie_details_controller.dart';
+import 'package:hackflix/data/language.dart';
 import 'package:hackflix/data/movie_details.dart';
 import 'package:hackflix/widgets/backbone.dart';
 import 'package:hackflix/widgets/custom_appbar.dart';
@@ -37,7 +39,7 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
           Expanded(
             flex: 4,
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
+              margin: EdgeInsets.only(top: spaceBetweenElements),
               child: Image.network(
                 "https://image.tmdb.org/t/p/original${movieDetails.posterPath}",
               ),
@@ -46,44 +48,95 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
           SizedBox(height: spaceBetweenElements),
           Container(
             margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
-            child: Text(movieDetails.originalTitle!),
+            child: Text(
+              movieDetails.originalTitle!,
+              style: TextStyle(fontSize: 20.0),
+            ),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
-            child: Text(movieDetails.voteAverage!.toString()),
+            child: Text(
+              '${movieDetails.voteAverage!}/10',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey,
+              ),
+            ),
           ),
           Container(
+            height: 50.0,
             margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("LENGTH".tr),
-                    SizedBox(height: spaceBetweentitleAndData),
-                    Text(movieDetails.runtime!.toString()),
+                    Text(
+                      "LENGTH".tr,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    // SizedBox(height: spaceBetweentitleAndData),
+                    Text(
+                      movieDetails.runtime!.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey,
+                      ),
+                    ),
                   ],
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("LANGUAGE".tr),
-                    SizedBox(height: spaceBetweentitleAndData),
-                    Text(movieDetails.originalLanguage!.toString()),
+                    Text(
+                      "LANGUAGE".tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    // SizedBox(height: spaceBetweentitleAndData),
+                    Container(
+                      height: 25.0,
+                      width: 25.0,
+                      child: _buildFlagLanguage(movieDetails),
+                    ),
                   ],
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("YEAR".tr),
-                    SizedBox(height: spaceBetweentitleAndData),
-                    Text(DateFormat("dd/MM/yyyy")
-                        .format(movieDetails.releaseDate!)),
+                    Text(
+                      "YEAR".tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    // SizedBox(height: spaceBetweentitleAndData),
+                    Text(
+                      DateFormat("dd/MM/yyyy")
+                          .format(movieDetails.releaseDate!),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey,
+                      ),
+                    ),
                   ],
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("VOTE_COUNT".tr),
-                    SizedBox(height: spaceBetweentitleAndData),
-                    Text(movieDetails.voteCount!.toString()),
+                    Text(
+                      "VOTE_COUNT".tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    // SizedBox(height: spaceBetweentitleAndData),
+                    Text(
+                      movieDetails.voteCount!.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -94,9 +147,17 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("STORYLINE".tr),
+                Text(
+                  "STORYLINE".tr,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 SizedBox(height: spaceBetweentitleAndData),
-                Text(movieDetails.overview!),
+                Text(
+                  movieDetails.overview!,
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                  ),
+                ),
               ],
             ),
           ),
@@ -105,9 +166,19 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
     );
   }
 
+  SvgPicture _buildFlagLanguage(MovieDetails movieDetails) {
+    Language language = Language.languages
+        .firstWhere((lang) => lang.language == movieDetails.originalLanguage);
+
+    return SvgPicture.asset(
+      language.flagPath!,
+      semanticsLabel: language.label,
+    );
+  }
+
   CustomAppbarWidget _buildAppBar() {
     return CustomAppbarWidget(
-      middleText: "LOL",
+      middleText: "",
       appbarSubWidget: Container(),
       actions: [
         ThemePickerWidget(),
