@@ -1,16 +1,32 @@
-# hackflix
+# What can I find in this project ?
 
-A new Flutter project.
+- Subject => Hackflix, Display a list of movies on which t's possible to sort and a movie details screen.
+- API call, data comming from (https://developers.themoviedb.org/)
+- State managment => Getx (https://pub.dev/packages/get)
+- Theme and be able to switch between dark and light theme
+- Translations in english and in french by using Getx
+- Migrated to flutter 2.0
+- Unit test (in progress)
 
-## Getting Started
+# Goals ?
+Going deeper in learning Flutter and so being more "professional".
 
-This project is a starting point for a Flutter application.
+Fixing goal one after one.
 
-A few resources to get you started if this is your first Flutter project:
+Finding a way to learn a lone or with other people (in a way, similar to PP).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Tool used ?
+- get => https://pub.dev/packages/get
+- dio => https://pub.dev/packages/dio
+- flutter_svg => https://pub.dev/packages/- flutter_svg
+- flutter_dotenv => https://pub.dev/packages/flutter_svg
+- intl => https://pub.dev/packages/intl
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# More
+Want to communicate ? Share ? or anything else ?
+ralexis149@gmail.com
+
+
+# Contributor(s)
+- Hackages (https://www.hackages.io/)
+    - for time and material, my personal computer is a potato
