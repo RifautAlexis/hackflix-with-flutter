@@ -79,7 +79,6 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    // SizedBox(height: spaceBetweentitleAndData),
                     Text(
                       movieDetails.runtime!.toString(),
                       style: TextStyle(
@@ -96,7 +95,6 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
                       "LANGUAGE".tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    // SizedBox(height: spaceBetweentitleAndData),
                     Container(
                       height: 25.0,
                       width: 25.0,
@@ -111,7 +109,6 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
                       "YEAR".tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    // SizedBox(height: spaceBetweentitleAndData),
                     Text(
                       DateFormat("dd/MM/yyyy")
                           .format(movieDetails.releaseDate!),
@@ -129,7 +126,6 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
                       "VOTE_COUNT".tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    // SizedBox(height: spaceBetweentitleAndData),
                     Text(
                       movieDetails.voteCount!.toString(),
                       style: TextStyle(
