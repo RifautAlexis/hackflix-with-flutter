@@ -6,7 +6,7 @@
 - Theme and be able to switch between dark and light theme
 - Translations in english and in french by using Getx
 - Migrated to flutter 2.0
-- Unit test (in progress)
+- Unit test (Cancelled, delay for a future training project)
 
 # Goals ?
 Going deeper in learning Flutter and so being more "professional".
