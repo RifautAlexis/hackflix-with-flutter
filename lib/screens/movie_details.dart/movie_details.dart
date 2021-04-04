@@ -12,6 +12,9 @@ import 'package:intl/intl.dart';
 
 class MovieDetailsWidget extends GetView<MovieDetailsController> {
   final int id = int.parse(Get.parameters['id']!);
+  final double spaceBetweenElements = 12.5;
+  final double spaceBetweentitleAndData = 10.0;
+  MovieDetails? movieDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,8 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
     return BackboneWidget(
       appBar: _buildAppBar(),
       body: Obx(() {
-        return controller.movieDetails.value == null
+        movieDetails = controller.movieDetails.value;
+        return movieDetails == null
             ? Center(child: CircularProgressIndicator())
             : _buildBody();
       }),
@@ -28,9 +32,7 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
   }
 
   Widget _buildBody() {
-    MovieDetails movieDetails = controller.movieDetails.value!;
-    double spaceBetweenElements = 12.5;
-    double spaceBetweentitleAndData = 10.0;
+    // MovieDetails movieDetails = controller.movieDetails.value!;
 
     return SizedBox.expand(
       child: Column(
@@ -41,7 +43,7 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
             child: Container(
               margin: EdgeInsets.only(top: spaceBetweenElements),
               child: Image.network(
-                "https://image.tmdb.org/t/p/original${movieDetails.posterPath}",
+                "https://image.tmdb.org/t/p/original${movieDetails!.posterPath}",
               ),
             ),
           ),
@@ -49,14 +51,14 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
           Container(
             margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
             child: Text(
-              movieDetails.originalTitle!,
+              movieDetails!.originalTitle!,
               style: TextStyle(fontSize: 20.0),
             ),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
             child: Text(
-              '${movieDetails.voteAverage!}/10',
+              '${movieDetails!.voteAverage!}/10',
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -67,76 +69,7 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
           Container(
             height: 50.0,
             margin: EdgeInsets.symmetric(vertical: spaceBetweenElements),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "LENGTH".tr,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      movieDetails.runtime!.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "LANGUAGE".tr,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Container(
-                      height: 25.0,
-                      width: 25.0,
-                      child: _buildFlagLanguage(movieDetails),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "YEAR".tr,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      DateFormat("dd/MM/yyyy")
-                          .format(movieDetails.releaseDate!),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "VOTE_COUNT".tr,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      movieDetails.voteCount!.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            child: _buildDetails(),
           ),
           Container(
             margin: EdgeInsets.all(spaceBetweenElements),
@@ -149,7 +82,7 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
                 ),
                 SizedBox(height: spaceBetweentitleAndData),
                 Text(
-                  movieDetails.overview!,
+                  movieDetails!.overview!,
                   style: TextStyle(
                     color: Colors.blueGrey,
                   ),
@@ -159,6 +92,78 @@ class MovieDetailsWidget extends GetView<MovieDetailsController> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildDetails() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "LENGTH".tr,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              movieDetails!.runtime!.toString(),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey,
+              ),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "LANGUAGE".tr,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Container(
+              height: 25.0,
+              width: 25.0,
+              child: _buildFlagLanguage(movieDetails!),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "YEAR".tr,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              DateFormat("dd/MM/yyyy").format(movieDetails!.releaseDate!),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey,
+              ),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "VOTE_COUNT".tr,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              movieDetails!.voteCount!.toString(),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
